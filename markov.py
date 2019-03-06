@@ -17,6 +17,7 @@ markov = []
 dumlisttwo = fulltextlist
 for x in unique:
     markov.insert(0, [])
+#Test
 for x in fulltextlist:
     ind = unique.index(x)
     if fulltextlist.index(x)+1 < len(fulltextlist):
