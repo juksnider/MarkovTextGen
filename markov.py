@@ -1,17 +1,16 @@
 import random as r
 #Markov chain program by JukSnider
 r.seed()
-inputfile = open("input.rtf","r")
+#
+inputfile = open("input.txt","r")
 text = inputfile.read()
 dumlist = text.split()
 fulltextlist = []
 unique = []
 for x in dumlist:
-    if "\\" not in x and "Helvetica" not in x and "}" not in x:
-        fulltextlist.append(x)
-    if x not in unique and "\\" not in x and "Helvetica" not in x and "}" not in x:
+    fulltextlist.append(x)
+    if x not in unique:
         unique.append(x)
-
 numwords = len(unique)
 markov = []
 dumlisttwo = fulltextlist
@@ -23,10 +22,9 @@ for x in fulltextlist:
     if fulltextlist.index(x)+1 < len(fulltextlist):
         markov[ind].insert(1, fulltextlist[fulltextlist.index(x)+1])
     fulltextlist[fulltextlist.index(x)] = "okaythisisepic"
-
-words = input("How many words (punctuation counts as a word) do you want to have? >>>")
+words = input("How many words do you want to have? >>>")
 words = int(words)-1
-startingwordone = markov[r.randint(0,len(markov))]
+startingwordone = markov[r.randint(0,len(markov))-1]
 startingwordtwo = startingwordone[r.randint(0,len(startingwordone))-1]
 while startingwordtwo == "." or startingwordtwo == "?" or startingwordtwo == "," or startingwordtwo == ":":
     startingwordone = markov[r.randint(0,len(markov))]
